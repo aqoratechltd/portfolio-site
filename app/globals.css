@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts Import ── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #0066FF #0a0a0f;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0a0a0f; }
+::-webkit-scrollbar-thumb { background: #0066FF; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #3399FF; }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #030305;
+  color: #f0f0f8;
+  font-family: var(--font-body);
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* Hide default cursor when custom cursor is active */
+a, button, [role="button"] {
+  cursor: none;
+}
+
+/* ── Noise Texture ── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  width: 110%;
+  height: 110%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  animation: grain 0.8s steps(1) infinite;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ── Glass card ── */
+.glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.glass-electric {
+  background: rgba(0,102,255,0.06);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0,102,255,0.15);
+}
+
+/* ── Typography utilities ── */
+.text-gradient {
+  background: linear-gradient(135deg, #f0f0f8 0%, #a0a0b8 50%, #0066FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-electric {
+  background: linear-gradient(90deg, #0066FF 0%, #3399FF 50%, #66BBFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-white {
+  background: linear-gradient(180deg, #ffffff 0%, #a0a0b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Electric glow ── */
+.electric-glow {
+  box-shadow: 0 0 40px rgba(0,102,255,0.4), 0 0 80px rgba(0,102,255,0.15);
+}
+
+.text-electric-glow {
+  text-shadow: 0 0 30px rgba(0,102,255,0.6), 0 0 60px rgba(0,102,255,0.3);
+}
+
+/* ── Grid background ── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0,102,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,102,255,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.dot-bg {
+  background-image: radial-gradient(circle, rgba(0,102,255,0.2) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ── Marquee ── */
+.marquee-container {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(0,102,255,0.35);
+  color: #f0f0f8;
+}
+
+/* ── Magnetic button ── */
+.magnetic-btn {
+  display: inline-block;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* ── Scroll reveal base ── */
+.reveal-text {
+  opacity: 0.08;
+  transition: opacity 0.6s ease;
+}
+.reveal-text.revealed {
+  opacity: 1;
+}
+
+/* ── Page transition wrapper ── */
+.page-transition {
+  min-height: 100vh;
+}
+
+/* ── Floating CTA pulse ── */
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 1; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0,102,255,0.4);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* ── Calendly override ── */
+.calendly-inline-widget {
+  min-width: 320px;
+  height: 630px;
+}
+
+/* ── Service card hover line ── */
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #0066FF, #3399FF);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover::after {
+  width: 100%;
+}
+
+/* ── Bento grid ── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  gap: 1px;
+}
+
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
