@@ -17,20 +17,20 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Link: LinkIcon, ShoppingCart, Cloud, ShieldCheck,
 };
 
-// Bento sizes: some tiles span 2 cols or 2 rows
+// Bento sizes: responsive — collapse to single col on mobile to avoid implicit grid columns
 const BENTO_SPANS = [
-  "col-span-2 row-span-2", // AI Services - featured
+  "col-span-1 md:col-span-2 row-span-1 md:row-span-2", // ecommerce - featured
   "col-span-1",
   "col-span-1",
   "col-span-1",
   "col-span-1",
-  "col-span-2", // Generative AI - featured
+  "col-span-1 md:col-span-2", // lead-generation - featured
+  "col-span-1 md:col-span-2", // branding - fills last row gap
   "col-span-1",
   "col-span-1",
   "col-span-1",
   "col-span-1",
-  "col-span-2", // Blockchain - featured
-  "col-span-1",
+  "col-span-1 md:col-span-2",
   "col-span-1",
   "col-span-1",
   "col-span-1",
@@ -116,8 +116,8 @@ export default function ServicesGrid() {
                 <Link
                   href={`/services/${service.id}`}
                   className={cn(
-                    "service-card group relative flex flex-col h-full min-h-[200px] p-6 bg-obsidian hover:bg-graphite transition-colors duration-300 overflow-hidden",
-                    isFeatured && "min-h-[280px]"
+                    "service-card group relative flex flex-col h-full min-h-[180px] md:min-h-[200px] p-5 md:p-6 bg-obsidian hover:bg-graphite transition-colors duration-300 overflow-hidden",
+                    isFeatured && "md:min-h-[280px]"
                   )}
                 >
                   {/* Hover glow */}
