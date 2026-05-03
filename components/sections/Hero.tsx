@@ -19,7 +19,6 @@ export default function Hero() {
   });
 
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
 
   return (
@@ -40,7 +39,7 @@ export default function Hero() {
       />
 
       {/* Radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-electric/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(800px,100vw)] h-[min(800px,100vw)] rounded-full bg-electric/5 blur-[120px] pointer-events-none" />
 
       {/* Electric orb */}
       <motion.div
@@ -49,12 +48,11 @@ export default function Hero() {
           opacity: [0.15, 0.25, 0.15],
         }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-electric/10 blur-[80px] pointer-events-none"
+        className="absolute top-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 rounded-full bg-electric/10 blur-[80px] pointer-events-none"
       />
 
       {/* Content */}
       <motion.div
-        style={{ opacity }}
         className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center pt-24 md:pt-16 lg:pt-0"
       >
         {/* Badge */}
@@ -62,7 +60,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 py-2 rounded-full glass border border-electric/20 text-xs font-mono text-electric mb-8 max-w-full"
+          className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 py-2 rounded-full bg-electric/[0.08] border border-electric/20 text-xs font-mono text-electric mb-8 max-w-full"
           style={{ fontFamily: "var(--font-mono)" }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-electric animate-pulse shrink-0" />
@@ -78,13 +76,10 @@ export default function Hero() {
           className="font-display font-extrabold leading-[0.88] mb-6"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          <span className="block text-[clamp(2.5rem,8vw,7rem)] text-ghost">
-            We Grow Bold
+          <span className="block text-[clamp(2.25rem,7vw,5rem)] text-ghost">
+            We Grow Bold <span className="text-gradient-electric">Brands</span>
           </span>
-          <span className="block text-[clamp(2.5rem,8vw,7rem)] text-gradient-electric">
-            Brands
-          </span>
-          <span className="block text-[clamp(2.5rem,8vw,7rem)] text-ghost">
+          <span className="block text-[clamp(2.25rem,7vw,5rem)] text-ghost">
             Online.
           </span>
         </motion.h1>
@@ -94,7 +89,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg md:text-xl text-mist max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-base md:text-xl text-mist max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed px-2 sm:px-0"
         >
           From ecommerce stores to global enterprises — we strategize, execute, and scale digital marketing that delivers real, measurable results.
           <span className="text-ghost font-medium"> No fluff. No excuses.</span>
@@ -115,7 +110,7 @@ export default function Hero() {
             <span className="relative">Book a Strategy Call</span>
           </MagneticButton>
 
-          <MagneticButton className="group flex items-center justify-center gap-2 px-6 py-4 rounded-xl glass border border-white/[0.08] text-ghost text-base font-medium hover:border-electric/30 transition-all duration-200 w-full sm:w-auto whitespace-nowrap">
+          <MagneticButton className="group flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-obsidian border border-white/[0.08] text-ghost text-base font-medium hover:border-electric/30 transition-all duration-200 w-full sm:w-auto whitespace-nowrap">
             See Our Work
           </MagneticButton>
         </motion.div>
@@ -125,7 +120,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.85 }}
-          className="flex flex-wrap items-center justify-center gap-8 mt-16"
+          className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mt-10 md:mt-16"
         >
           {[
             { value: "150+", label: "Campaigns Delivered" },

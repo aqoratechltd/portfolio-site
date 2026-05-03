@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 /* ── Google Fonts Import ── */
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
 :root {
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Poppins', 'Georgia', serif;
+  --font-body: 'Montserrat', 'Georgia', serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* scrollbar */
@@ -24,14 +24,41 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  outline: none !important;
 }
 
+/* ── Kill all outlines & focus rings everywhere ── */
+*,
+*::before,
+*::after,
 *:focus,
 *:focus-visible,
-*:focus-within {
+*:focus-within,
+*:active,
+a,
+button,
+input,
+textarea,
+select,
+[tabindex],
+[role="button"] {
   outline: none !important;
-  box-shadow: none !important;
+  outline-width: 0 !important;
+  outline-color: transparent !important;
+  outline-offset: 0 !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+@layer base {
+  *,
+  *:focus,
+  *:focus-visible,
+  *:focus-within,
+  *:active {
+    outline: none !important;
+    outline-width: 0 !important;
+    outline-offset: 0 !important;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 html {
@@ -44,6 +71,7 @@ body {
   font-family: var(--font-body);
   cursor: none;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Hide default cursor when custom cursor is active */
@@ -66,18 +94,14 @@ a, button, [role="button"] {
   background-size: 200px 200px;
 }
 
-/* ── Glass card ── */
+/* ── Flat cards (no glassmorphism) ── */
 .glass {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: #111118;
   border: 1px solid rgba(255,255,255,0.06);
 }
 
 .glass-electric {
-  background: rgba(0,102,255,0.06);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(0,102,255,0.08);
   border: 1px solid rgba(0,102,255,0.15);
 }
 
@@ -226,3 +250,61 @@ a, button, [role="button"] {
     grid-template-columns: 1fr;
   }
 }
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   ═══════════════════════════════════════════ */
+
+[data-theme="light"] body {
+  background-color: #f5f6fa;
+  color: #0d0d1a;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track { background: #e8e8f0; }
+
+/* Surfaces */
+[data-theme="light"] .bg-void { background-color: #f5f6fa !important; }
+[data-theme="light"] .bg-obsidian { background-color: #ffffff !important; }
+[data-theme="light"] .bg-onyx { background-color: #f0f1f8 !important; }
+[data-theme="light"] .bg-graphite { background-color: #e8eaf4 !important; }
+
+/* Text */
+[data-theme="light"] .text-ghost { color: #0d0d1a !important; }
+[data-theme="light"] .text-mist { color: #3a3a5c !important; }
+[data-theme="light"] .text-smoke { color: #6a6a88 !important; }
+
+/* Flat cards in light mode */
+[data-theme="light"] .glass {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.07);
+}
+[data-theme="light"] .glass-electric {
+  background: rgba(0,102,255,0.04);
+  border-color: rgba(0,102,255,0.18);
+}
+
+/* Grid bg */
+[data-theme="light"] .grid-bg {
+  background-image:
+    linear-gradient(rgba(0,102,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,102,255,0.06) 1px, transparent 1px);
+}
+
+/* Borders */
+[data-theme="light"] .border-white\/\[0\.04\] { border-color: rgba(0,0,0,0.06) !important; }
+[data-theme="light"] .border-white\/\[0\.06\] { border-color: rgba(0,0,0,0.08) !important; }
+[data-theme="light"] .border-white\/\[0\.08\] { border-color: rgba(0,0,0,0.10) !important; }
+
+/* Footer */
+[data-theme="light"] footer { background-color: #ecedf5 !important; }
+
+/* Noise overlay — reduce in light mode */
+[data-theme="light"] .noise-overlay { opacity: 0.012; }
+
+/* Hero gradient remap */
+[data-theme="light"] .bg-hero-gradient {
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,102,255,0.10) 0%, transparent 60%);
+}
+
+/* Mobile menu light override */
+[data-theme="light"] .mobile-menu-bg { background-color: #f5f6fa !important; }

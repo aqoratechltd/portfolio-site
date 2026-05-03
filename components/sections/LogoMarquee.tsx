@@ -8,7 +8,7 @@ const LOGOS = [...PARTNERS, ...PARTNERS];
 
 export default function LogoMarquee() {
   return (
-    <section className="relative py-16 border-y border-white/[0.04] overflow-hidden">
+    <section className="relative py-10 md:py-16 border-y border-white/[0.04] overflow-hidden">
       {/* Label */}
       <p
         className="text-center text-xs font-mono text-smoke uppercase tracking-widest mb-10"
@@ -19,11 +19,11 @@ export default function LogoMarquee() {
 
       {/* Row 1 — forward */}
       <div className="marquee-container relative overflow-hidden">
-        <div className="flex gap-12 animate-marquee w-max">
+        <div className="flex gap-6 md:gap-12 animate-marquee w-max">
           {LOGOS.map((logo, i) => (
             <div
               key={i}
-              className="flex items-center gap-2 px-6 py-2 rounded-lg glass border border-white/[0.05] hover:border-electric/20 transition-colors duration-300 group whitespace-nowrap min-w-max"
+              className="flex items-center gap-2 px-3 sm:px-6 py-2 rounded-lg bg-obsidian border border-white/[0.05] hover:border-electric/20 transition-colors duration-300 group whitespace-nowrap min-w-max"
             >
               <span
                 className="text-sm font-medium text-smoke group-hover:text-mist transition-colors duration-300"
@@ -38,11 +38,11 @@ export default function LogoMarquee() {
 
       {/* Row 2 — reverse */}
       <div className="marquee-container relative overflow-hidden mt-4">
-        <div className="flex gap-12 animate-marquee-reverse w-max">
+        <div className="flex gap-6 md:gap-12 animate-marquee-reverse w-max">
           {[...LOGOS].reverse().map((logo, i) => (
             <div
               key={i}
-              className="flex items-center gap-2 px-6 py-2 rounded-lg glass border border-white/[0.05] hover:border-electric/20 transition-colors duration-300 group whitespace-nowrap min-w-max"
+              className="flex items-center gap-2 px-3 sm:px-6 py-2 rounded-lg bg-obsidian border border-white/[0.05] hover:border-electric/20 transition-colors duration-300 group whitespace-nowrap min-w-max"
             >
               <span
                 className="text-sm font-medium text-smoke group-hover:text-mist transition-colors duration-300"

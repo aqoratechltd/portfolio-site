@@ -4,6 +4,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";
 import FloatingCTA from "@/components/ui/FloatingCTA";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
+import MotionProvider from "@/components/ui/MotionProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -33,35 +35,39 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" data-theme="dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap"
           rel="stylesheet"
         />
       </head>
       <body className="bg-void text-ghost antialiased">
-        {/* Animated noise overlay — cinematic grain */}
-        <div className="noise-overlay" aria-hidden="true" />
+        <MotionProvider>
+        <ThemeProvider>
+          {/* Animated noise overlay — cinematic grain */}
+          <div className="noise-overlay" aria-hidden="true" />
 
-        {/* Custom cursor */}
-        <CustomCursor />
+          {/* Custom cursor */}
+          <CustomCursor />
 
-        {/* Navbar */}
-        <Navbar />
+          {/* Navbar */}
+          <Navbar />
 
-        {/* Page content */}
-        <main className="page-transition">
-          {children}
-        </main>
+          {/* Page content */}
+          <main className="page-transition">
+            {children}
+          </main>
 
-        {/* Footer */}
-        <Footer />
+          {/* Footer */}
+          <Footer />
 
-        {/* Floating booking CTA */}
-        <FloatingCTA />
+          {/* Floating booking CTA */}
+          <FloatingCTA />
+        </ThemeProvider>
+        </MotionProvider>
       </body>
     </html>
   );

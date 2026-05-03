@@ -35,10 +35,10 @@ export default function Footer() {
       {/* Top gradient */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric/50 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand column */}
-          <div className="lg:col-span-2">
+          <div className="col-span-2 md:col-span-3 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="relative w-8 h-8">
                 <div className="absolute inset-0 bg-electric rounded-lg" />
@@ -51,7 +51,7 @@ export default function Footer() {
                 Aqora
               </span>
             </Link>
-            <p className="text-mist text-sm leading-relaxed max-w-xs mb-6">
+            <p className="text-mist text-sm leading-relaxed max-w-sm mb-6">
               Aqora — We grow bold brands online through strategy, creativity, and relentless execution.
             </p>
             <div className="flex items-center gap-3">
@@ -64,7 +64,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href={href}
-                  className="w-9 h-9 rounded-lg glass border border-white/[0.08] flex items-center justify-center text-mist hover:text-electric hover:border-electric/30 transition-all duration-200"
+                  className="w-9 h-9 rounded-lg bg-obsidian border border-white/[0.08] flex items-center justify-center text-mist hover:text-electric hover:border-electric/30 transition-all duration-200"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -81,9 +81,9 @@ export default function Footer() {
               >
                 {category}
               </h3>
-              <ul className="space-y-2.5">
+              <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link.href}>
+                  <li key={link.label}>
                     <Link
                       href={link.href}
                       className="text-sm text-mist hover:text-ghost transition-colors duration-150"
@@ -98,18 +98,22 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-10 md:mt-16 pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-smoke font-mono" style={{ fontFamily: "var(--font-mono)" }}>
             © 2026 Aqora. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 md:gap-6">
-            {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((item) => (
+            {[
+              { label: "Privacy Policy", href: "/privacy-policy" },
+              { label: "Terms of Service", href: "/terms-of-service" },
+              { label: "Cookie Policy", href: "/cookie-policy" },
+            ].map((item) => (
               <Link
-                key={item}
-                href="#"
+                key={item.href}
+                href={item.href}
                 className="text-xs text-smoke hover:text-mist transition-colors"
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </div>

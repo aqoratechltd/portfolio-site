@@ -10,57 +10,51 @@ export default function CTABanner() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section className="py-32 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-electric/5 to-transparent" />
-      <div className="absolute inset-0 grid-bg opacity-50" />
+    <section className="w-full relative overflow-hidden border-y border-electric/20 bg-electric/[0.06]">
+      {/* Subtle background accent */}
+      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-electric" />
 
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative glass border border-electric/20 rounded-3xl p-6 sm:p-10 md:p-14 lg:p-20 text-center overflow-hidden"
-        >
-          {/* Glow orbs */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-40 bg-electric/20 blur-[60px] rounded-full" />
-          <div className="absolute bottom-0 left-1/4 w-60 h-40 bg-electric/10 blur-[80px] rounded-full" />
-
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-electric/10 border border-electric/20 text-xs font-mono text-electric mb-8">
-            <Sparkles className="w-3.5 h-3.5" />
-            Start Your Project
-          </div>
-
-          <h2
-            className="text-4xl md:text-6xl lg:text-7xl font-display font-extrabold text-ghost mb-6 leading-tight"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Ready to Scale
-            <br />
-            <span className="text-gradient-electric">Your Business?</span>
-          </h2>
-
-          <p className="text-mist text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-            Let&apos;s talk about your goals. We&apos;ll map out a strategy, timeline, and plan — all in a free 30-minute discovery call.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <MagneticButton
-              onClick={() => setModalOpen(true)}
-              className="group relative flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-electric text-white font-medium text-base electric-glow overflow-hidden w-full sm:w-auto whitespace-nowrap"
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="relative max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        {/* Left — headline */}
+        <div className="flex items-center gap-3">
+          <Sparkles className="w-4 h-4 text-electric shrink-0" />
+          <div>
+            <span
+              className="font-display font-bold text-ghost text-base sm:text-lg leading-tight"
+              style={{ fontFamily: "var(--font-display)" }}
             >
-              <span className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <span className="relative">Book Your Free Call</span>
-            </MagneticButton>
-
-            <p className="text-sm text-smoke">
-              No commitment. No spam. Just clarity.
-            </p>
+              Ready to Scale Your Business?
+            </span>
+            <span className="hidden sm:inline text-smoke text-sm ml-3">
+              Free 30-min strategy call — no commitment.
+            </span>
           </div>
-        </motion.div>
-      </div>
+        </div>
+
+        {/* Right — CTA */}
+        <div className="flex items-center gap-3 shrink-0">
+          <p className="text-xs text-smoke sm:hidden text-center">
+            Free 30-min call. No commitment.
+          </p>
+          <MagneticButton
+            onClick={() => setModalOpen(true)}
+            className="group relative flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-electric text-white font-medium text-sm electric-glow overflow-hidden whitespace-nowrap"
+          >
+            <span className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            <span className="relative flex items-center gap-2 whitespace-nowrap">
+              Book Free Call
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </span>
+          </MagneticButton>
+        </div>
+      </motion.div>
 
       <CalendlyModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </section>

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import LogoMarquee from "@/components/sections/LogoMarquee";
 import ServicesGrid from "@/components/sections/ServicesGrid";
+import ServicesSlider from "@/components/sections/ServicesSlider";
 import Testimonials from "@/components/sections/Testimonials";
 import CTABanner from "@/components/sections/CTABanner";
 
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Hero />
       <LogoMarquee />
       <ServicesGrid />
+      <ServicesSlider />
       <Testimonials />
       <CTABanner />
     </>

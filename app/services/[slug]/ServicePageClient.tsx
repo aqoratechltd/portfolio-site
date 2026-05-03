@@ -14,7 +14,7 @@ import CalendlyModal from "@/components/ui/CalendlyModal";
 import CTABanner from "@/components/sections/CTABanner";
 import { SERVICES } from "@/lib/utils";
 
-const ICON_MAP: Record<string, React.ElementType> = {
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
   Film, Server, Brain, Layers, TrendingUp, Network,
   Sparkles, Smartphone, Users, Globe, Database,
   Link: LinkIcon, ShoppingCart, Cloud, ShieldCheck,
@@ -144,14 +144,14 @@ export default function ServicePageClient({ service }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-40 pb-24 overflow-hidden">
+      <section className="relative pt-28 sm:pt-32 md:pt-40 pb-12 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 grid-bg" />
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full blur-[120px] opacity-15 pointer-events-none"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(800px,100vw)] h-[500px] rounded-full blur-[120px] opacity-15 pointer-events-none"
           style={{ background: service.color }}
         />
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back link */}
           <motion.div
             initial={{ opacity: 0, x: -10 }}
@@ -167,7 +167,7 @@ export default function ServicePageClient({ service }: Props) {
             </Link>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <div>
               {/* Category */}
               <motion.span
@@ -184,7 +184,7 @@ export default function ServicePageClient({ service }: Props) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-5xl md:text-6xl font-display font-extrabold text-ghost leading-tight mb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-ghost leading-tight mb-6"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 {service.title}
@@ -194,7 +194,7 @@ export default function ServicePageClient({ service }: Props) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-xl text-mist leading-relaxed mb-10"
+                className="text-base md:text-xl text-mist leading-relaxed mb-8 md:mb-10"
               >
                 {service.description}
               </motion.p>
@@ -229,7 +229,7 @@ export default function ServicePageClient({ service }: Props) {
               className="relative"
             >
               <div
-                className="relative rounded-2xl p-10 glass border overflow-hidden"
+                className="relative rounded-2xl p-6 md:p-10 glass border overflow-hidden"
                 style={{ borderColor: `${service.color}25` }}
               >
                 <div
@@ -271,13 +271,13 @@ export default function ServicePageClient({ service }: Props) {
       </section>
 
       {/* Features */}
-      <section className="py-24 border-t border-white/[0.04]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
+      <section className="py-14 md:py-24 border-t border-white/[0.04]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 md:gap-16">
             {/* What's included */}
             <div>
               <h2
-                className="text-3xl font-display font-bold text-ghost mb-8"
+                className="text-2xl sm:text-3xl font-display font-bold text-ghost mb-6 md:mb-8"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 What&apos;s Included
@@ -302,7 +302,7 @@ export default function ServicePageClient({ service }: Props) {
             {/* Our Process */}
             <div>
               <h2
-                className="text-3xl font-display font-bold text-ghost mb-8"
+                className="text-2xl sm:text-3xl font-display font-bold text-ghost mb-6 md:mb-8"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Our Process
@@ -333,10 +333,10 @@ export default function ServicePageClient({ service }: Props) {
       </section>
 
       {/* Related Services */}
-      <section className="py-24 border-t border-white/[0.04]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-14 md:py-24 border-t border-white/[0.04]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
-            className="text-3xl font-display font-bold text-ghost mb-10"
+            className="text-2xl sm:text-3xl font-display font-bold text-ghost mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Related Services

@@ -39,7 +39,7 @@ export const SERVICES = [
     title: "Web & App Development",
     description: "High-performance websites and mobile apps built to convert — fast, responsive, and crafted with your brand's goals at the core.",
     icon: "Code",
-    color: "#0066FF",
+    color: "#F43F5E",
     category: "Development",
   },
   {
@@ -104,7 +104,12 @@ export const TESTIMONIALS = [
 ];
 
 export const PARTNERS = [
-  "Shopify", "WooCommerce", "Meta", "Google Ads", "TikTok", "LinkedIn", "Vercel", "Next.js"
+  // Pakistani brands
+  "Sapphire", "Zellbury", "Nishat Linen", "Khaadi", "Gul Ahmed", "Sana Safinaz",
+  "Alkaram Studio", "Bonanza Satrangi", "J. Junaid Jamshed", "Outfitters",
+  // International brands
+  "Nike", "Zara", "H&M", "ASOS", "Gymshark", "Fashion Nova",
+  "MAC Cosmetics", "Sephora", "Dyson", "Anker",
 ];
 
 export const STATS = [
