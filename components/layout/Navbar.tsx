@@ -119,15 +119,21 @@ export default function Navbar() {
         >
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="group flex items-center">
+            <Link href="/" className="group flex items-center gap-2.5">
               <Image
                 src="/logo2.png"
                 alt="Aqora"
                 width={44}
                 height={44}
-                className="w-10 h-10 rounded-xl object-cover group-hover:opacity-90 transition-opacity duration-300"
+                className="w-9 h-9 rounded-xl object-cover group-hover:opacity-90 transition-opacity duration-300"
                 priority
               />
+              <span
+                className="font-display font-bold text-lg text-ghost tracking-tight group-hover:opacity-90 transition-opacity duration-300"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Aqora Tech
+              </span>
             </Link>
 
             {/* Desktop Nav */}

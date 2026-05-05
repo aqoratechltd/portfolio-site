@@ -68,14 +68,20 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
-            <Link href="/" className="flex items-center mb-4">
+            <Link href="/" className="flex items-center gap-2.5 mb-4">
               <Image
                 src="/logo2.png"
                 alt="Aqora"
                 width={44}
                 height={44}
-                className="w-10 h-10 rounded-xl object-cover"
+                className="w-9 h-9 rounded-xl object-cover"
               />
+              <span
+                className="font-display font-bold text-lg text-ghost tracking-tight"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Aqora Tech
+              </span>
             </Link>
             <p className="text-mist text-sm leading-relaxed max-w-sm mb-6">
               Aqora — We grow bold brands online through strategy, creativity, and relentless execution.
