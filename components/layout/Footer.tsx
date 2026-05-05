@@ -68,14 +68,13 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
-            <Link href="/" className="overflow-hidden flex items-center mb-4" style={{ height: '28px', width: '140px' }}>
+            <Link href="/" className="flex items-center mb-4">
               <Image
-                src="/logo.png"
+                src="/logo2.png"
                 alt="Aqora"
-                width={400}
-                height={135}
-                className="w-[400px] h-auto flex-shrink-0"
-                style={{ marginTop: '-48px', marginBottom: '-48px' }}
+                width={44}
+                height={44}
+                className="w-10 h-10 rounded-xl object-cover"
               />
             </Link>
             <p className="text-mist text-sm leading-relaxed max-w-sm mb-6">

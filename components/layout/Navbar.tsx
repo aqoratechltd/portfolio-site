@@ -119,14 +119,13 @@ export default function Navbar() {
         >
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="group overflow-hidden flex items-center" style={{ height: '28px', width: '140px' }}>
+            <Link href="/" className="group flex items-center">
               <Image
-                src="/logo.png"
+                src="/logo2.png"
                 alt="Aqora"
-                width={400}
-                height={135}
-                className="w-[400px] h-auto group-hover:opacity-90 transition-opacity duration-300 flex-shrink-0"
-                style={{ marginTop: '-48px', marginBottom: '-48px' }}
+                width={44}
+                height={44}
+                className="w-10 h-10 rounded-xl object-cover group-hover:opacity-90 transition-opacity duration-300"
                 priority
               />
             </Link>
